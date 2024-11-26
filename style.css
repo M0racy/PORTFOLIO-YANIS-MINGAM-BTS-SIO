@@ -372,6 +372,10 @@ span {
     background-color: var(--second-bg-color);
 }
 
+.E5 {
+    background-color: var(--bg-color);
+}
+
 .projets {
     background-color: var(--second-bg-color);
 }
@@ -384,6 +388,18 @@ span {
     flex-direction: column;
 }
 
+.E5-box {
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.E5 .heading {
+    margin-bottom: 5rem;
+  }
+
 .projets .heading {
     margin-bottom: 5rem;
 }
@@ -395,12 +411,63 @@ span {
     box-shadow: 0 0 25px var(--main-color);
 }
 
+.E5-box img {
+    width: 25rem;
+    border-radius: 10%;
+    border: 3px solid var(--main-color);
+    box-shadow: 0 0 25px var(--main-color);
+}
+
+.wrapper-E4 {
+    display: flex; /* VALUE THAT DETERMINE IF THE BOX ARE CENTERED AT LEFT OR CENTERED AS A FLEXBOX OBJECT !!*/
+    grid-template-columns: repeat(3,1fr);
+    gap: 5rem;
+}
+
+/*
+.wrapper-E5 {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 5rem;
+}
+*/
+
+.wrapper-E5 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 5rem;
+    justify-content: center;
+    align-items: start;
+    padding: 2rem;
+}
+
+
 .wrapper {
     display: grid;
     grid-template-columns: repeat(3,1fr);
-    gap: 3rem;
+    gap: 5rem;
 }
+
 .projets-item {
+    min-height: 550px;
+    max-width: 450px;
+    background: rgba(0, 0, 0, 0.7);
+    border: 3px solid rgba(238,238,238,0.2);
+    border-radius: 2rem;
+    margin: 0 2rem;
+    padding: 30px 60px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 1.5rem;
+    color: white;
+    transition: 0.4s ease-in-out;
+}
+
+.E5-item {
     min-height: 550px;
     max-width: 450px;
     background: rgba(0, 0, 0, 0.7);
@@ -425,10 +492,16 @@ span {
     box-shadow: 0 0 50px var(--main-color);
 }
 
-.projets-item h2 {
+.E5-item:hover {
+    border: 3px solid var(--main-color);
+    transform: translateY(-10px) scale(1.03);
+    box-shadow: 0 0 50px var(--main-color);
+}
+
+.E5-item h2 {
     font-size: 2.8rem;
 }
-.projets-item p {
+.E5-item p {
     font-size: 1.3rem;
 }
 
@@ -581,6 +654,9 @@ span {
         left: 0;
     }
     .projets .wrapper {
+        grid-template-columns: repeat(1,1fr);
+    }
+    .E5 .wrapper-E5 {
         grid-template-columns: repeat(1,1fr);
     }
     .contact form {
