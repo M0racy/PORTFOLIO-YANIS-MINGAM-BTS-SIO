@@ -30,9 +30,9 @@ const apiKey = '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';
 
 // Constantes pour les catégories et les clés de cache
 const categories = {
-    cybersecurity: ["cybersecurity-news-1", "cybersecurity-news-2", "cybersecurity-news-3"],
-    ai: ["ai-news-1", "ai-news-2", "ai-news-3"],
-    network: ["network-news-1", "network-news-2", "network-news-3"]
+    cybersecurity: ["cybersecurity-news-1", "cybersecurity-news-2", "cybersecurity-news-3", "cybersecurity-news-4", "cybersecurity-news-5"],
+    ai: ["ai-news-1", "ai-news-2", "ai-news-3", "ai-news-4", "ai-news-5"],
+    network: ["network-news-1", "network-news-2", "network-news-3", "network-news-4", "network-news-5"]
 };
 
 const CACHE_KEY_PREFIX = "cachedNews_";
@@ -59,7 +59,7 @@ async function fetchNews(category, query) {
         let attempts = 0;
 
         // Réessais jusqu'à obtenir trois articles ou atteindre le nombre maximum de tentatives
-        while (validArticles.length < 3 && attempts < 10) {
+        while (validArticles.length < 3 && attempts < 25) {
             const response = await fetch(`https://api.perplexity.ai/chat/completions`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${apiKey}` },
@@ -126,12 +126,6 @@ function displayError(category, message) {
 }
 
 // Récupération des articles pour chaque catégorie
-fetchNews("cybersecurity", "Provide 3 French cybersecurity news articles and verify if url work well.Verify that articles and websites that you're using are trustable and trusted.Prioritize officials news website affiliated to french or european organisations. Each article should be on a single line with the title and URL only, separated by a hyphen (-). No additional comments. The article's language has to be French");
-fetchNews("ai", "Provide 3 French AI news articles and verify if url work well.Verify that articles and websites that you're using are trustable and trusted.Prioritize officials news website affiliated to french or european organisations. Each article should be on a single line with the title and URL only, separated by a hyphen (-). No additional comments. The article's language has to be French");
-fetchNews("network", "Provide 3 French IT and network news articles and verify if url work well.Verify that articles and websites that you're using are trustable and trusted.Prioritize officials news website affiliated to french or european organisations. Each article should be on a single line with the title and URL only, separated by a hyphen (-). No additional comments. The article's language has to be French");
-fetchNews("cybersecurity", "Provide 3 French cybersecurity news articles and verify if url work well.Verify that articles and websites that you're using are trustable and trusted.Prioritize officials news website affiliated to french or european organisations. Each article should be on a single line with the title and URL only, separated by a hyphen (-). No additional comments. The article's language has to be French");
-fetchNews("ai", "Provide 3 French AI news articles and verify if url work well. Verify that articles and websites that you're using are trustable and trusted.Prioritize officials news website affiliated to french or european organisations. Each article should be on a single line with the title and URL only, separated by a hyphen (-). No additional comments. The article's language has to be French");
-fetchNews("network", "Provide 3 French IT and network news articles and verify if url work well. Verify that articles and websites that you're using are trustable and trusted.Prioritize officials news website affiliated to french or european organisations. Each article should be on a single line with the title and URL only, separated by a hyphen (-). No additional comments. The article's language has to be French");
-fetchNews("cybersecurity", "Provide 3 French cybersecurity news articles and verify if url work well. Verify that articles and websites that you're using are trustable and trusted.Prioritize officials news website affiliated to french or european organisations. Each article should be on a single line with the title and URL only, separated by a hyphen (-). No additional comments. The article's language has to be French");
-fetchNews("ai", "Provide 3 French AI news articles and verify if url work well. Verify that articles and websites that you're using are trustable and trusted.Prioritize officials news website affiliated to french or european organisations. Each article should be on a single line with the title and URL only, separated by a hyphen (-). No additional comments. The article's language has to be French");
-fetchNews("network", "Provide 3 French IT and network news articles and verify if url work well. Verify that articles and websites that you're using are trustable and trusted.Prioritize officials news website affiliated to french or european organisations. Each article should be on a single line with the title and URL only, separated by a hyphen (-). No additional comments. The article's language has to be French");
+fetchNews("cybersecurity", "Provide 3 French cybersecurity news articles and verify if url work well.Verify that articles and websites that you're using are trustable and trusted.Prioritize officials news website affiliated to french or european governenment's websites and legislation. Each article should be on a single line with the title and URL only, separated by a hyphen (-). No additional comments. The article's language has to be French");
+fetchNews("ai", "Provide 3 French AI news articles and verify if url work well.Verify that articles and websites that you're using are trustable and trusted.Prioritize officials news website affiliated to french or european governenment's websites and legislation. Each article should be on a single line with the title and URL only, separated by a hyphen (-). No additional comments. The article's language has to be French");
+fetchNews("network", "Provide 3 French IT networks and infrastructures news articles and verify if url work well.Verify that articles and websites that you're using are trustable and trusted.Prioritize officials news website affiliated to french or european governenment's websites and legislation. Each article should be on a single line with the title and URL only, separated by a hyphen (-). No additional comments. The article's language has to be French");
