@@ -619,6 +619,63 @@ span {
     color: black;
 }
 
+#cybersecurity-news {
+    font-size: 1.6rem;
+    color: white;
+    text-align: left;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 2rem;
+    margin-top: 20px;
+}
+
+#cybersecurity-news h3 {
+    font-size: 2rem;
+    color: var(--main-color);
+    margin-bottom: 10px;
+}
+
+#cybersecurity-news p {
+    font-size: 1.4rem;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+#cybersecurity-news a {
+    color: var(--main-color);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+#cybersecurity-news a:hover {
+    text-decoration: underline;
+}
+#cybersecurity-news-1,
+#network-news-1,
+#ai-news-1 {
+    font-size: 1.6rem;
+    color: white;
+    text-align: left;
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 1rem;
+    margin-top: 10px;
+}
+
+#cybersecurity-news-1 a,
+#network-news-1 a,
+#ai-news-1 a {
+    color: var(--main-color);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+#cybersecurity-news-1 a:hover,
+#network-news-1 a:hover,
+#ai-news-1 a:hover {
+    text-decoration: underline;
+}
+
 .contact {
     background-color: var(--bg-color);
 }

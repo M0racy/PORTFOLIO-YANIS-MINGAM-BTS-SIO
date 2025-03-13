@@ -28,6 +28,7 @@ menuIcon.onclick = () => {
 
 const apiKey = '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';
 
+// Constantes pour les catégories et les clés de cache
 const categories = {
     cybersecurity: ["cybersecurity-news-1", "cybersecurity-news-2", "cybersecurity-news-3"],
     ai: ["ai-news-1", "ai-news-2", "ai-news-3"],
@@ -36,8 +37,9 @@ const categories = {
 
 const CACHE_KEY_PREFIX = "cachedNews_";
 const CACHE_TIME_KEY_PREFIX = "cacheTimestamp_";
-const CACHE_DURATION = 24 * 60 * 60 * 1000 * 7; // 24 heures
+const CACHE_DURATION = 24 * 60 * 60 * 1000 * 7; // 1 semaine
 
+// Fonction pour récupérer les articles
 async function fetchNews(category, query) {
     try {
         const cacheKey = CACHE_KEY_PREFIX + category;
@@ -46,6 +48,7 @@ async function fetchNews(category, query) {
         const cachedTimestamp = localStorage.getItem(cacheTimeKey);
         const now = Date.now();
 
+        // Vérification de la mise en cache
         if (cachedData && cachedTimestamp && now - cachedTimestamp < CACHE_DURATION) {
             console.log(`Using cached news data for ${category}`);
             displayArticles(category, JSON.parse(cachedData));
@@ -55,7 +58,8 @@ async function fetchNews(category, query) {
         let validArticles = [];
         let attempts = 0;
 
-        while (validArticles.length < 3 && attempts < 5) { // Max 5 retry attempts
+        // Réessais jusqu'à obtenir trois articles ou atteindre le nombre maximum de tentatives
+        while (validArticles.length < 3 && attempts < 5) {
             const response = await fetch(`https://api.perplexity.ai/chat/completions`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${apiKey}` },
@@ -73,14 +77,18 @@ async function fetchNews(category, query) {
             const articlesText = data?.choices?.[0]?.message?.content;
             const articles = articlesText.split('\n').filter(line => line.trim() !== '');
 
-            validArticles = articles.filter(article => article.includes(' - '));
+            // Filtrage des articles valides
+            validArticles = [...validArticles, ...articles.filter(article => article.includes(' - '))];
             attempts++;
         }
 
+        // Traitement des résultats
         if (validArticles.length >= 3) {
-            localStorage.setItem(cacheKey, JSON.stringify(validArticles));
+            // Prendre les trois premiers articles valides
+            const topThreeArticles = validArticles.slice(0, 3);
+            localStorage.setItem(cacheKey, JSON.stringify(topThreeArticles));
             localStorage.setItem(cacheTimeKey, now);
-            displayArticles(category, validArticles);
+            displayArticles(category, topThreeArticles);
         } else {
             displayError(category, 'Articles insuffisants.');
         }
@@ -90,20 +98,26 @@ async function fetchNews(category, query) {
     }
 }
 
+// Fonction pour afficher les articles
 function displayArticles(category, articles) {
     categories[category].forEach((elementId, index) => {
         const element = document.getElementById(elementId);
         if (!element) return;
 
-        const [title, url] = articles[index].split(' - ');
-        if (title && url) {
-            element.innerHTML = `<a href="${url.trim()}" target="_blank">${title.trim()}</a>`;
+        if (index < articles.length) {
+            const [title, url] = articles[index].split(' - ');
+            if (title && url) {
+                element.innerHTML = `<a href="${url.trim()}" target="_blank">${title.trim()}</a>`;
+            } else {
+                element.innerHTML = '<p>Article format incorrect.</p>';
+            }
         } else {
-            element.innerHTML = '<p>Article format incorrect.</p>';
+            element.innerHTML = '<p>Aucun article disponible.</p>';
         }
     });
 }
 
+// Fonction pour afficher les erreurs
 function displayError(category, message) {
     categories[category].forEach(elementId => {
         const element = document.getElementById(elementId);
@@ -111,7 +125,7 @@ function displayError(category, message) {
     });
 }
 
-// Récupération des articles pour chaque catégorie avec retry en cas d'erreur
-fetchNews("cybersecurity", "Provide exactly 3 different French cybersecurity news articles and verify if url work well. Each article should be a single line with the title and URL only, separated by a hyphen (-). No additional comments.");
-fetchNews("ai", "Provide exactly 3 different French AI news articles and verify if url work well. Each article should be a single line with the title and URL only, separated by a hyphen (-). No additional comments.");
-fetchNews("network", "Provide exactly 3 different French IT and network news articles and verify if url work well. Each article should be a single line with the title and URL only, separated by a hyphen (-). No additional comments.");
+// Récupération des articles pour chaque catégorie
+fetchNews("cybersecurity", "Provide 3 French cybersecurity news articles and verify if url work well. Each article should be on a single line with the title and URL only, separated by a hyphen (-). No additional comments. The article's language has to be French");
+fetchNews("ai", "Provide 3 French AI news articles and verify if url work well. Each article should be on a single line with the title and URL only, separated by a hyphen (-). No additional comments. The article's language has to be French");
+fetchNews("network", "Provide 3 French IT and network news articles and verify if url work well. Each article should be on a single line with the title and URL only, separated by a hyphen (-). No additional comments. The article's language has to be French");
