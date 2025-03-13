@@ -26,8 +26,13 @@ body {
 
 .entreprise p {
     font-size: 2rem;
-    text-align: center;
+    text-align: justify;
+    vertical-align: middle;
+    hyphens: auto;
+    widows: 2;
+    orphans: 2;
     line-height: 1.6;
+    word-spacing: 0.1em;
     max-width: 2000px;
     margin: 0 auto;
   }
