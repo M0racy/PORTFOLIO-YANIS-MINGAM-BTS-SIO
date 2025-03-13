@@ -59,7 +59,7 @@ async function fetchNews(category, query) {
         let attempts = 0;
 
         // Réessais jusqu'à obtenir trois articles ou atteindre le nombre maximum de tentatives
-        while (validArticles.length < 3 && attempts < 25) {
+        while (validArticles.length < 5 && attempts < 25) {
             const response = await fetch(`https://api.perplexity.ai/chat/completions`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${apiKey}` },

@@ -662,6 +662,54 @@ span {
     margin-top: 10px;
 }
 
+#cybersecurity-news-2,
+#network-news-2,
+#ai-news-2 {
+    font-size: 1.6rem;
+    color: white;
+    text-align: left;
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 1rem;
+    margin-top: 10px;
+}
+
+#cybersecurity-news-3,
+#network-news-3,
+#ai-news-3 {
+    font-size: 1.6rem;
+    color: white;
+    text-align: left;
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 1rem;
+    margin-top: 10px;
+}
+
+#cybersecurity-news-4,
+#network-news-4,
+#ai-news-4 {
+    font-size: 1.6rem;
+    color: white;
+    text-align: left;
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 1rem;
+    margin-top: 10px;
+}
+
+#cybersecurity-news-5,
+#network-news-5,
+#ai-news-5 {
+    font-size: 1.6rem;
+    color: white;
+    text-align: left;
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 1rem;
+    margin-top: 10px;
+}
+
 #cybersecurity-news-1 a,
 #network-news-1 a,
 #ai-news-1 a {
@@ -670,9 +718,65 @@ span {
     font-weight: bold;
 }
 
+#cybersecurity-news-2 a,
+#network-news-2 a,
+#ai-news-2 a {
+    color: var(--main-color);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+#cybersecurity-news-3 a,
+#network-news-3 a,
+#ai-news-3 a {
+    color: var(--main-color);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+#cybersecurity-news-4 a,
+#network-news-4 a,
+#ai-news-4 a {
+    color: var(--main-color);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+#cybersecurity-news-4 a,
+#network-news-4 a,
+#ai-news-4 a {
+    color: var(--main-color);
+    text-decoration: none;
+    font-weight: bold;
+}
+
 #cybersecurity-news-1 a:hover,
 #network-news-1 a:hover,
 #ai-news-1 a:hover {
+    text-decoration: underline;
+}
+
+#cybersecurity-news-2 a:hover,
+#network-news-2 a:hover,
+#ai-news-2 a:hover {
+    text-decoration: underline;
+}
+
+#cybersecurity-news-3 a:hover,
+#network-news-3 a:hover,
+#ai-news-3 a:hover {
+    text-decoration: underline;
+}
+
+#cybersecurity-news-4 a:hover,
+#network-news-4 a:hover,
+#ai-news-4 a:hover {
+    text-decoration: underline;
+}
+
+#cybersecurity-news-5 a:hover,
+#network-news-5 a:hover,
+#ai-news-5 a:hover {
     text-decoration: underline;
 }
 
